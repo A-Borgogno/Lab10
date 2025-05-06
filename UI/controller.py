@@ -28,9 +28,15 @@ class Controller:
             self._view.create_alert("Selezionare uno stato di partenza")
             return
         self._view._txt_result.controls.clear()
-        res = self._model.trovaRaggiungibili(country)
-
-
+        successori = self._model.trovaRaggiungibili(country)
+        if len(successori) == 0:
+            self._view._txt_result.controls.append(ft.Text(f"Nessuno stato raggiungibile da {country}"))
+            self._view.update_page()
+            return
+        self._view._txt_result.controls.append(ft.Text(f"Stati raggiungibili da {country}:", weight=ft.FontWeight.BOLD, size=18))
+        for s in successori:
+            self._view._txt_result.controls.append(ft.Text(s))
+        self._view.update_page()
 
     def readNode(self, e):
         self._node = e.control.data

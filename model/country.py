@@ -14,4 +14,4 @@ class Country:
         return self.CCode == other.CCode
 
     def __str__(self):
-        return f"{self.StateNme} {self.StateAbb}"
+        return f"{self.StateNme} ({self.StateAbb})"

@@ -14,7 +14,8 @@ class DAO():
                     from country c, contiguity c2
                     where c.CCode = c2.state1no
                     and c2.`year` < %s
-                    group by c.CCode """
+                    group by c.CCode
+                    order by c.StateNme """
 
         cursor.execute(query, (anno,))
 
